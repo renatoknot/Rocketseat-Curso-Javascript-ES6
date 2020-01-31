@@ -1,1 +1,3 @@
-"# Rocketseat-Curso-Javascript-ES6" 
+Rocketseat - Curso Livre de Javascript ES6+ (Starter) - Diego Fernandes
+
+
