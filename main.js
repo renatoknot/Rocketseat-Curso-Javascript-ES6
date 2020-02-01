@@ -34,10 +34,13 @@ class TodoList {
         this.todos = [];
     }
 
-    static addTodo() {
+    static addTodo() { // erro: pois o metodo estatico nao enxerga o restante da classe (atributos, metodos, etc)
         this.todos.push('Novo todo');
         console.log(this.todos);
     }
 }
 
+TodoList.addTodo();
+TodoList.addTodo();
+TodoList.addTodo();
 TodoList.addTodo();

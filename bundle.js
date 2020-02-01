@@ -41,6 +41,7 @@ function () {
   _createClass(TodoList, null, [{
     key: "addTodo",
     value: function addTodo() {
+      // erro: pois o metodo estatico nao enxerga o restante da classe (atributos, metodos, etc)
       this.todos.push('Novo todo');
       console.log(this.todos);
     }
@@ -49,4 +50,7 @@ function () {
   return TodoList;
 }();
 
+TodoList.addTodo();
+TodoList.addTodo();
+TodoList.addTodo();
 TodoList.addTodo();
