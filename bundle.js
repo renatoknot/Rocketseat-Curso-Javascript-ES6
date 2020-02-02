@@ -1,56 +1,66 @@
 "use strict";
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// class List {
-//     constructor() {
-//         this.data = [];
-//     }
-//     add(data) {
-//         this.data.push(data);
-//         console.log(this.data);
-// ;    }
-// }
-// class Todolist extends List{
-//     constructor() {
-//         super();
-//         this.usuario = 'Renato';
-//     }
-//     mostraUsuario() {
-//         console.log(this.usuario);
-//     }
-// }
-// var MinhaLista = new Todolist();
-// document.getElementById('novotodo').onclick = function () {
-//     MinhaLista.add('Novo todo');
-// }
-// MinhaLista.mostraUsuario();
-var TodoList =
-/*#__PURE__*/
-function () {
-  function TodoList() {
-    _classCallCheck(this, TodoList);
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
-    this.todos = [];
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+//REST
+//    (resto do objeto)
+var usuario = {
+  nome: 'Diego',
+  idade: 23,
+  empresa: 'Rocketseat'
+};
+
+var nome = usuario.nome,
+    resto = _objectWithoutProperties(usuario, ["nome"]);
+
+console.log(nome); //Diego
+
+console.log(resto); //{ idade: 23, empresa: 'Rocketseat' }
+
+var arr = [1, 2, 3, 4];
+var a = arr[0],
+    b = arr[1],
+    c = arr.slice(2);
+console.log(a); //1
+
+console.log(b); //2
+
+console.log(c); //[3, 4]
+
+function soma() {
+  for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+    params[_key] = arguments[_key];
   }
 
-  _createClass(TodoList, null, [{
-    key: "addTodo",
-    value: function addTodo() {
-      // erro: pois o metodo estatico nao enxerga o restante da classe (atributos, metodos, etc)
-      this.todos.push('Novo todo');
-      console.log(this.todos);
-    }
-  }]);
+  return params.reduce(function (total, next) {
+    return total + next;
+  });
+}
 
-  return TodoList;
-}();
+console.log(soma(1, 3, 4)); //8
+//SPREAD
 
-TodoList.addTodo();
-TodoList.addTodo();
-TodoList.addTodo();
-TodoList.addTodo();
+var arr1 = [1, 2, 3];
+var arr2 = [4, 5, 6];
+var arr3 = [].concat(arr1, arr2);
+console.log(arr3); //[ 1, 2, 3, 4, 5, 6 ]
+
+var usuario1 = {
+  nome: 'Renato',
+  idade: 31,
+  empresa: 'Rocketseat'
+};
+
+var usuario2 = _objectSpread({}, usuario1, {
+  nome: 'Gabriel'
+});
+
+console.log(usuario2); //{ nome: 'Gabriel', idade: 31, empresa: 'Rocketseat' }
