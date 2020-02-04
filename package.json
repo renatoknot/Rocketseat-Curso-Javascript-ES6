@@ -12,9 +12,11 @@
     "@babel/preset-env": "^7.8.4",
     "babel-loader": "8.0.0-beta.0",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.2"
   },
   "scripts": {
-    "dev": "webpack --mode=development -w"
+    "dev": "webpack-dev-server --mode=development",
+    "build": "webpack --mode=production"
   }
 }
