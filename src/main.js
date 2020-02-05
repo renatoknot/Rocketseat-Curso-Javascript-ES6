@@ -12,4 +12,49 @@
 
 //  console.log(funcoes.soma(1,2));
 //  console.log(funcoes.sub(1,2));
-alert('Testando');
+const minhaPromise = () => new Promise((resolve, reject) => {
+    setTimeout(() => {resolve('OK')}, 2000);
+});
+
+// minhaPromise().then(response => ...); ANTES
+
+
+// async function executaPromise() {
+//     console.log(await minhaPromise());
+//     console.log(await minhaPromise());
+//     console.log(await minhaPromise());
+
+//     //usando sem o async/await ficaria assim
+//     // minhaPromise().then(response => {
+//     //     console.log(response);
+
+//     //     minhaPromise().then(response => {
+//     //         console.log(response);
+
+//     //         minhaPromise().then(response => {
+//     //             console.log(response);
+//     //         })
+//     //     })
+//     // })
+// }
+
+//CONVERTENDO A FUNÇÃO ACIMA PARA ARROW FUNCTION
+// const executaPromise = async () => {
+//     console.log(await minhaPromise());
+//     console.log(await minhaPromise());
+//     console.log(await minhaPromise());
+// };
+
+// executaPromise();
+
+import axios from 'axios';
+
+class Api {
+    static async getUserInfo(username){
+        const response = await axios.get(`https://api.github.com/users/${username}`);
+
+        console.log(response);
+    }
+}
+
+Api.getUserInfo('renatoknot');
